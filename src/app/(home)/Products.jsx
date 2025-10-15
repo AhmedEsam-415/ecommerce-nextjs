@@ -1,12 +1,14 @@
+import Link from "next/link";
+
 const Products = ({ posts }) => {
   return (
     <section className="products flex">
       {posts.map((item, index) => {
         return (
           <article title={item.title} key={index} className="card">
-            <a href="/pages/product-details.html">
+            <Link href={`/product-details/${item.id}`}>
               <img width={266} height={270} src={item.productImg} />
-            </a>
+            </Link>
             <div style={{ width: 266 }} className="content">
               <h1 className="title">{item.title.slice(0, 14)}...</h1>
               <p className="description">{item.description.slice(0, 120)}...</p>

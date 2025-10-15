@@ -5,7 +5,7 @@ import Products from "./Products";
 
 export default async function Home() {
   const data = await fetch("http://localhost:4000/products", {
-    next: { revalidate: 5 },
+    next: { revalidate: 0 },
   });
   const posts = await data.json();
 
