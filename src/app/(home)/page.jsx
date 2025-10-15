@@ -2,11 +2,15 @@ import Footer from "components/footer/Footer";
 import Header from "components/header/Header";
 import "./home.css";
 import Products from "./Products";
+import { notFound } from "next/navigation";
 
 export default async function Home() {
   const data = await fetch("http://localhost:4000/products", {
     next: { revalidate: 0 },
   });
+  if (!data.ok) {
+    notFound();
+  }
   const posts = await data.json();
 
   return (

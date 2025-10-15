@@ -8,10 +8,32 @@ import "../productDetails.css";
 import "../../globals.css";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import { notFound } from "next/navigation";
+
+//# Generate metadata for each product details page dynamically based on product data
+//# fetched using the product ID from the route parameters.
+//# This function is called by Next.js to set the page title.
+export async function generateMetadata({ params }) {
+  // read route params
+  const { id } = await params;
+
+  // fetch data
+  const product = await fetch(`http://localhost:4000/products/${id}`).then(
+    (res) => res.json()
+  );
+
+  return {
+    title: product.title,
+    description: product.description,
+  };
+}
 
 const Page = async ({ params }) => {
   const { id } = await params;
   const data = await fetch(`http://localhost:4000/products/${id}`);
+  if (!data.ok) {
+    notFound();
+  }
   const posts = await data.json();
 
   return (

@@ -10,7 +10,7 @@ const Products = ({ posts }) => {
               <img width={266} height={270} src={item.productImg} />
             </Link>
             <div style={{ width: 266 }} className="content">
-              <h1 className="title">{item.title.slice(0, 14)}...</h1>
+              <h1 className="title">{item.title.slice(0, 10)}...</h1>
               <p className="description">{item.description.slice(0, 120)}...</p>
               <div
                 className="flex"
