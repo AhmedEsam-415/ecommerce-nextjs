@@ -5,7 +5,7 @@ const Products = ({ posts }) => {
         return (
           <article title={item.title} key={index} className="card">
             <a href="/pages/product-details.html">
-              <img width={266} height={270} src={item.image} alt="" srcSet="" />
+              <img width={266} height={270} src={item.productImg} />
             </a>
             <div style={{ width: 266 }} className="content">
               <h1 className="title">{item.title.slice(0, 14)}...</h1>

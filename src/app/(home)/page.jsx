@@ -4,8 +4,11 @@ import "./home.css";
 import Products from "./Products";
 
 export default async function Home() {
-  const data = await fetch("https://fakestoreapi.com/products");
+  const data = await fetch("http://localhost:4000/products", {
+    next: { revalidate: 5 },
+  });
   const posts = await data.json();
+
   return (
     <>
       <div className="top-img">
